@@ -1,0 +1,19 @@
+/* style.css */
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.tab-active {
+    border-color: #f59e0b; /* amber-500 */
+    background-color: #fffbeb; /* amber-50 */
+    color: #b45309; /* amber-700 */
+    font-weight: 700;
+}
+.tab-inactive {
+    border-color: transparent;
+    color: #6b7280; /* gray-500 */
+}
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}

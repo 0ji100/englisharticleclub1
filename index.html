@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영자신문 동아리: 장소 소개 기사 쓰기 가이드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chosen Palette: Calm Harmony -->
+    <!-- Application Structure Plan: The SPA transforms the linear worksheet into a user-friendly, four-step interactive guide (Learn, Brainstorm, Write, Feedback). This step-by-step structure, managed by tab-based navigation, breaks down the learning process into manageable tasks. This is more engaging for students than a long, scrollable document. Interactive elements like accordions for learning content and forms for brainstorming replace static text and tables, encouraging active participation and making the abstract process of writing feel more concrete and guided. The "Simplify it!" sections explicitly integrate the Feynman technique by prompting students to grasp the core purpose of each writing section in the simplest terms. -->
+    <!-- Visualization & Content Choices:
+        - Report Info: Writing structure (Intro, Body, Conclusion). Goal: Organize/Inform. Method: Interactive accordion (HTML/CSS/JS) with added "Simplify it!" sections. Interaction: Click to expand/collapse details and engage with core concept simplification. Justification: Prevents information overload and encourages focused learning on one section at a time, while actively applying Feynman's core principle.
+        - Report Info: Brainstorming table. Goal: Organize user input. Method: Interactive HTML form with textareas. Interaction: User types ideas, which are stored in a JS object. Justification: Provides a modern, app-like experience and allows the captured data to be used in the writing step.
+        - Report Info: Draft writing. Goal: Create. Method: Large textarea next to a "helper" panel. Interaction: The helper panel dynamically displays the user's brainstormed notes. Justification: Creates an integrated writing environment, reducing cognitive load by keeping relevant notes visible.
+        - Report Info: Feynman Technique & Challenges. Goal: Inform/Engage. Method: Stylized callout boxes with icons. Interaction: N/A (static prompt). Justification: Visually separates metacognitive prompts from instructional content.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl">
+        
+        <header class="text-center mb-8 md:mb-12">
+            <h1 class="text-3xl md:text-4xl font-bold text-stone-800 mb-2">📝 장소 소개 기사 쓰기 가이드</h1>
+            <p class="text-stone-600">영자신문 동아리를 위한 인터랙티브 활동지</p>
+        </header>
+
+        <div id="feynman-section" class="bg-white p-6 rounded-xl shadow-sm mb-8 border border-stone-200">
+            <h2 class="text-2xl font-bold text-amber-600 mb-4 flex items-center cursor-pointer" onclick="toggleAccordion('feynman-content')">
+                <span class="text-3xl mr-3">✨</span> 파인만 기법으로 배우는 글쓰기!
+                <span class="ml-auto text-xl text-stone-400 transform transition-transform duration-300">▼</span>
+            </h2>
+            <div id="feynman-content" class="accordion-content">
+                <p class="text-stone-700 leading-relaxed mt-2">
+                    안녕하세요, 영자신문동아리 친구들! 오늘은 우리가 탐방했던 멋진 장소들을 다른 친구들에게 소개하는 기사를 써 볼 거예요. 글쓰기가 어렵게 느껴질 수도 있지만, 걱정 마세요! 우리는 '파인만 기법'을 사용해서 쉽고 재미있게 글쓰기 방법을 배워볼 거예요.
+                </p>
+                <div class="mt-4 bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+                    <h3 class="font-bold text-amber-800 flex items-center"><span class="text-2xl mr-2">💡</span>파인만 기법이 뭐예요?</h3>
+                    <p class="mt-2 text-amber-900">
+                        파인만 기법은 노벨상을 받은 물리학자 리처드 파인만이 사용했던 공부 방법이에요. 복잡한 내용을 **아주 쉽게 설명할 수 있다면, 그 내용을 정말로 이해한 것**이라고 생각하는 거죠! 마치 어린 동생에게 설명해 주듯이 말이에요. 오늘 우리는 이 기법을 사용해서 장소 소개 글쓰기 구조를 완벽하게 이해해 볼 거예요!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <main class="bg-white p-4 sm:p-6 rounded-xl shadow-lg border border-stone-200">
+            <nav class="flex flex-wrap border-b border-stone-200 mb-6">
+                <button id="tab-learn" class="flex-grow p-4 text-center border-b-4 transition-colors duration-300 tab-active" onclick="switchTab('learn')">🚀 1단계: 구조 배우기</button>
+                <button id="tab-brainstorm" class="flex-grow p-4 text-center border-b-4 transition-colors duration-300 tab-inactive" onclick="switchTab('brainstorm')">🧠 2단계: 아이디어 구상</button>
+                <button id="tab-write" class="flex-grow p-4 text-center border-b-4 transition-colors duration-300 tab-inactive" onclick="switchTab('write')">✍️ 3단계: 초고 쓰기</button>
+                <button id="tab-feedback" class="flex-grow p-4 text-center border-b-4 transition-colors duration-300 tab-inactive" onclick="switchTab('feedback')">🗣️ 4단계: 친구와 피드백</button>
+            </nav>
+
+            <div id="content-learn" class="tab-content">
+                <div class="space-y-4">
+                    <p class="text-center text-stone-600 mb-6">글의 각 부분을 클릭해서 어떤 내용이 들어가는지 확인해 보세요!</p>
+                    
+                    <div class="border border-stone-200 rounded-lg">
+                        <button class="w-full p-4 text-left bg-stone-100 hover:bg-stone-200 transition-colors rounded-t-lg flex justify-between items-center" onclick="toggleAccordion('content-intro')">
+                            <span class="font-bold text-xl text-teal-700">1. Introduction (도입)</span>
+                            <span class="text-xl text-stone-400 transform transition-transform duration-300">▼</span>
+                        </button>
+                        <div id="content-intro" class="accordion-content">
+                            <div class="p-4 md:p-6 border-t border-stone-200 space-y-4">
+                                <p class="text-teal-800 font-semibold">✨ 글의 목적을 소개하고, 장소에 대한 간단한 정보를 줘요.</p>
+                                <div class="mt-4 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                                    <h4 class="font-bold text-purple-800 flex items-center"><span class="text-2xl mr-2">🤔</span> 가장 간단하게 말하면?</h4>
+                                    <p class="mt-1 text-purple-900">도입부는 독자에게 "이 글이 무엇에 대한 이야기이고, 왜 읽어야 하는지"를 알려주는 부분이에요. 마치 영화의 예고편처럼요!</p>
+                                </div>
+                                <div><h4 class="font-bold">구성 요소:</h4><ul class="list-disc list-inside text-stone-700"><li>어떤 장소인지</li><li>어디에 있는지</li><li>왜 이 장소를 소개하려고 하는지</li></ul></div>
+                                <div><h4 class="font-bold">추천 연결어:</h4><p class="text-stone-700 font-mono text-sm bg-stone-100 p-2 rounded">Let me introduce..., This is a great place called..., It is located in..., We chose this place because...</p></div>
+                                <div><h4 class="font-bold">예시 문장:</h4><p class="text-stone-700 italic border-l-4 border-teal-300 pl-4">"Let us introduce a fun place in our town: Sungin Traditional Market. This place is located near our school in Seoul. We chose this place because it is full of exciting things to see and eat!"</p></div>
+                                <div class="mt-4 bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800">🤔 파인만 챌린지 1</h4><p class="text-blue-900 mt-1">도입부는 왜 필요하고, 어떤 내용이 들어가야 하는지 5살 동생에게 설명해 준다면 어떻게 말할 건가요?</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg">
+                        <button class="w-full p-4 text-left bg-stone-100 hover:bg-stone-200 transition-colors flex justify-between items-center" onclick="toggleAccordion('content-body')">
+                            <span class="font-bold text-xl text-sky-700">2. Main Body (본문)</span>
+                            <span class="text-xl text-stone-400 transform transition-transform duration-300">▼</span>
+                        </button>
+                        <div id="content-body" class="accordion-content">
+                            <div class="p-4 md:p-6 border-t border-stone-200 space-y-6">
+                                <p class="text-sky-800 font-semibold">✨ 장소의 특징, 할 수 있는 활동, 특별한 점을 자세히 설명해요.</p>
+                                <div class="mt-4 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                                    <h4 class="font-bold text-purple-800 flex items-center"><span class="text-2xl mr-2">🤔</span> 가장 간단하게 말하면?</h4>
+                                    <p class="mt-1 text-purple-900">본문은 독자에게 "그 장소가 어떤 곳이고, 거기서 무엇을 할 수 있는지"를 자세히 보여주는 부분이에요. 마치 여행 가이드북처럼요!</p>
+                                </div>
+                                <div><h4 class="font-bold">2-1. 장소의 특징</h4><p class="text-stone-700 italic border-l-4 border-sky-300 pl-4 mt-2">"First of all, this market is famous for delicious street food. You can try tteokbokki, hotteok, and more at a low price."</p></div>
+                                <div><h4 class="font-bold">2-2. 할 수 있는 활동</h4><p class="text-stone-700 italic border-l-4 border-sky-300 pl-4 mt-2">"In addition, you can enjoy shopping for handmade goods. Many people take photos here because it looks traditional and beautiful."</p></div>
+                                <div><h4 class="font-bold">2-3. 특별한 이유나 경험</h4><p class="text-stone-700 italic border-l-4 border-sky-300 pl-4 mt-2">"What makes this place special is the friendly atmosphere. We visited last week and enjoyed sweet pancakes made right in front of us!"</p></div>
+                                <div class="mt-4 bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800">🤔 파인만 챌린지 2</h4><p class="text-blue-900 mt-1">친구가 '할 수 있는 활동' 부분을 어떻게 써야 할지 모르겠다고 해요. 어떻게 설명해 줄 건가요?</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border border-stone-200 rounded-lg">
+                        <button class="w-full p-4 text-left bg-stone-100 hover:bg-stone-200 transition-colors rounded-b-lg flex justify-between items-center" onclick="toggleAccordion('content-rec')">
+                            <span class="font-bold text-xl text-rose-700">3. Recommendation (결론)</span>
+                            <span class="text-xl text-stone-400 transform transition-transform duration-300">▼</span>
+                        </button>
+                        <div id="content-rec" class="accordion-content">
+                             <div class="p-4 md:p-6 border-t border-stone-200 space-y-4">
+                                <p class="text-rose-800 font-semibold">✨ 이 장소를 왜 추천하는지 말하고, 독자에게 방문을 권해요.</p>
+                                <div class="mt-4 bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                                    <h4 class="font-bold text-purple-800 flex items-center"><span class="text-2xl mr-2">🤔</span> 가장 간단하게 말하면?</h4>
+                                    <p class="mt-1 text-purple-900">결론은 독자에게 "그래서 이 장소에 꼭 가봐야 하는 이유"를 다시 한번 강조하고, 방문을 설득하는 부분이에요. 마치 마지막 인사처럼요!</p>
+                                </div>
+                                <div><h4 class="font-bold">추천 연결어:</h4><p class="text-stone-700 font-mono text-sm bg-stone-100 p-2 rounded">That’s why we recommend..., If you want to..., Don’t miss the chance to visit!</p></div>
+                                <div><h4 class="font-bold">예시 문장:</h4><p class="text-stone-700 italic border-l-4 border-rose-300 pl-4">"That’s why we recommend Sungin Traditional Market to everyone. If you want to eat tasty food and feel Korean culture, this is the best place! Don’t miss the chance to visit this amazing place!"</p></div>
+                                <div class="mt-4 bg-blue-50 p-4 rounded-lg"><h4 class="font-bold text-blue-800">🤔 파인만 챌린지 3</h4><p class="text-blue-900 mt-1">결론부의 가장 중요한 역할은 무엇일까요? 한 문장으로 요약해서 설명해 보세요!</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-brainstorm" class="tab-content hidden">
+                <p class="text-center text-stone-600 mb-6">여러분이 소개하고 싶은 장소를 정하고, 각 부분에 들어갈 아이디어를 적어보세요.</p>
+                <div class="space-y-6">
+                    <div>
+                        <label for="place-name" class="block text-lg font-bold text-stone-700 mb-2">📍 내가 소개할 장소:</label>
+                        <input type="text" id="place-name" class="w-full p-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-amber-400" placeholder="예: 성인전통시장">
+                    </div>
+                    <div class="space-y-4" id="brainstorm-form">
+                         <div><label for="idea-intro" class="block font-bold text-teal-700 mb-1">1. Introduction (도입)</label><textarea id="idea-intro" rows="3" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="어떤 장소이고, 어디에 있고, 왜 소개하고 싶은지 간단하게 적어보세요."></textarea></div>
+                         <div><label for="idea-body1" class="block font-bold text-sky-700 mb-1">2-1. Main Body (장소 특징)</label><textarea id="idea-body1" rows="3" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="무엇으로 유명한가요? 특별한 점은 무엇인가요?"></textarea></div>
+                         <div><label for="idea-body2" class="block font-bold text-sky-700 mb-1">2-2. Main Body (할 수 있는 활동)</label><textarea id="idea-body2" rows="3" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="그곳에서 무엇을 하거나 경험할 수 있나요?"></textarea></div>
+                         <div><label for="idea-body3" class="block font-bold text-sky-700 mb-1">2-3. Main Body (특별한 이유/경험)</label><textarea id="idea-body3" rows="3" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="그 장소가 특별한 이유나, 나의 특별했던 경험을 적어보세요."></textarea></div>
+                         <div><label for="idea-rec" class="block font-bold text-rose-700 mb-1">3. Recommendation (결론)</label><textarea id="idea-rec" rows="3" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="왜 이 장소를 추천하나요? 독자에게 방문을 권유하는 말을 써보세요."></textarea></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content-write" class="tab-content hidden">
+                 <p class="text-center text-stone-600 mb-6">2단계에서 구상한 아이디어를 바탕으로 멋진 기사 초고를 작성해 보세요!</p>
+                 <div class="flex flex-col md:flex-row gap-6">
+                    <div class="w-full md:w-2/3">
+                        <textarea id="draft-area" rows="20" class="w-full p-4 border border-stone-300 rounded-lg focus:ring-2 focus:ring-amber-400 focus:border-amber-400" placeholder="이곳에 기사를 작성하세요..."></textarea>
+                        <button onclick="copyDraft()" class="mt-4 bg-amber-500 hover:bg-amber-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">기사 내용 복사하기</button>
+                        <p id="copy-message" class="text-green-600 mt-2 text-sm hidden">클립보드에 복사되었습니다!</p>
+                    </div>
+                    <div class="w-full md:w-1/3 bg-stone-100 p-4 rounded-lg border border-stone-200">
+                        <h3 class="font-bold text-lg mb-4 text-stone-700">💡 나의 아이디어 노트</h3>
+                        <div id="idea-note" class="space-y-3 text-sm">
+                            <p class="text-stone-500">2단계에서 아이디어를 작성하면 이곳에 표시됩니다.</p>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+            <div id="content-feedback" class="tab-content hidden">
+                <p class="text-center text-stone-600 mb-6">작성한 초고를 친구와 바꿔 읽고, 아래 체크리스트를 활용해 피드백을 나눠보세요.</p>
+                <div class="max-w-2xl mx-auto bg-stone-100 p-6 rounded-lg border border-stone-200">
+                    <h3 class="text-xl font-bold text-center mb-4">피드백 체크리스트 ✅</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center"><input type="checkbox" id="check1" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"><label for="check1" class="ml-3 text-stone-700">도입(Introduction)에서 장소와 글을 쓴 이유를 명확하게 소개했나요?</label></div>
+                        <div class="flex items-center"><input type="checkbox" id="check2" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"><label for="check2" class="ml-3 text-stone-700">본문(Main Body)에 장소의 특징과 활동이 구체적으로 잘 나타나 있나요?</label></div>
+                        <div class="flex items-center"><input type="checkbox" id="check3" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"><label for="check3" class="ml-3 text-stone-700">자신만의 특별한 경험이나 생각이 잘 드러나 있나요?</label></div>
+                        <div class="flex items-center"><input type="checkbox" id="check4" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"><label for="check4" class="ml-3 text-stone-700">결론(Recommendation)에서 장소를 추천하는 이유가 설득력 있나요?</label></div>
+                        <div class="flex items-center"><input type="checkbox" id="check5" class="h-5 w-5 rounded border-gray-300 text-amber-600 focus:ring-amber-500"><label for="check5" class="ml-3 text-stone-700">글의 흐름이 자연스럽고 재미있게 읽히나요?</label></div>
+                        <div>
+                            <label for="feedback-memo" class="block font-semibold text-stone-700 mt-6 mb-2">친구에게 전하고 싶은 칭찬이나 조언:</label>
+                            <textarea id="feedback-memo" rows="4" class="w-full p-3 border border-stone-300 rounded-lg" placeholder="칭찬은 구체적으로, 조언은 따뜻하게 전해주세요."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        
+        <footer class="text-center mt-8 md:mt-12">
+            <p class="text-stone-500">오늘 활동으로 여러분의 글쓰기 실력이 한 단계 성장했기를 바랍니다!</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
